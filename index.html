@@ -69,16 +69,6 @@
         transform: scale(1);
       }
     }
-
-    @media only screen and (orientation:portrait) {
-      .land_image {
-        display: none;
-      }
-
-      .por_image {
-        display: none;
-      }
-    }
   </style>
 
 </head>
@@ -86,7 +76,7 @@
 
 <body style="width: 100%;height: 100%;">
 
-  <img class='image' style=" width: 100%; height: 100%; object-fit: cover;" />
+  <img class='image' style=" width: 100%; height: 100%; object-fit: none;" />
   <canvas id="particles"> </canvas>
   <canvas id="text"> </canvas>
   <audio id="play_song">
