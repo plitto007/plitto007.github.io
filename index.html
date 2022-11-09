@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- self create by LTP, fix viewport on mobile -->
+
 <html>
 
 <head>
@@ -7,7 +7,6 @@
   <meta charset="UTF-8">
   <meta author="LTP">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- self create by LTP, fix viewport on mobile -->
   <style>
     html,
     body {
@@ -70,21 +69,46 @@
         transform: scale(1);
       }
     }
+
+    @media only screen and (orientation:portrait) {
+      .land_image {
+        display: none;
+      }
+
+      .por_image {
+        display: none;
+      }
+    }
   </style>
+
 </head>
 <!-- self create by LTP, fix viewport on mobile -->
 
 <body style="width: 100%;height: 100%;">
-  <div> <img style=" width: 100%; height: 100%; object-fit: fill;" src="image.jpg" /></div>
+
+  <img class='image' style=" width: 100%; height: 100%; object-fit: cover;" />
   <canvas id="particles"> </canvas>
   <canvas id="text"> </canvas>
-  <audio id="play_song" autoplay>
+  <audio id="play_song">
     <source src="song.mp3" type="audio/mpeg">
   </audio>
-  <!-- self create by LTP, fix viewport on mobile -->
+  <script>
+    window.addEventListener('resize', onresize);
+    window.addEventListener('load',onresize);
+    function onresize() {
+      console.log("screen: ", window.width, window.height)
+      if (document.body.clientWidth >= document.body.clientHeight) {
+        document.getElementsByClassName('image')[0].src = "land_image.jpg";
+      } else {
+        document.getElementsByClassName('image')[0].src = "por_image.jpg";
+      }
+    }
+  </script>
+
   <script>
     document.addEventListener('click', musicPlay);
     function musicPlay() {
+      console.log("CLICK")
       document.getElementById('play_song').play();
       document.removeEventListener('click', musicPlay);
     }
@@ -344,6 +368,7 @@
       context.fillText(settings.text.content, x, y);
     })(document.getElementById("text"));
   </script>
-  <!-- self create by LTP, fix viewport on mobile -->
+
+
 
 </html>
